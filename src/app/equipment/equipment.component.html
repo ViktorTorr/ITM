@@ -23,8 +23,8 @@
       </md-list-item>
 
       <md-list-item>
-          <button *ngIf="!params.eqpId" md-raised-button (click)="onAddNew()"> Save </button>
-        <button *ngIf="params.eqpId" md-raised-button (click)="onUpdate()"> Update </button>
+          <button color="primary" *ngIf="!params.eqpId" md-raised-button (click)="onAddNew()"> Save </button>
+        <button color="primary" *ngIf="params.eqpId" md-raised-button (click)="onUpdate()"> Update </button>
       </md-list-item>
     </md-list>
   </md-card>

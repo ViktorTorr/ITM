@@ -1,5 +1,11 @@
-<h2 *ngIf="employee" md-subheader>List of equipment for {{employee.name}} {{employee.surname}}</h2>
-<button *ngIf="employee" md-raised-button (click)="addNew(employee._id)"> Add New Equipment </button>
+<md-toolbar class="fixed-header">
+  <div class="md-toolbar-tools">
+    <h2 *ngIf="employee" md-subheader>Details for {{employee.name}} {{employee.surname}}</h2>
+  </div>
+</md-toolbar>
+<h2 *ngIf="employee" class="top-margin" md-subheader>List of equipment</h2>
+<!--<h2 *ngIf="employee" md-subheader>List of equipment for {{employee.name}} {{employee.surname}}</h2>-->
+<button color="primary" *ngIf="employee" md-raised-button (click)="addNew(employee._id)"> Add New Equipment </button>
 <md-table #table [dataSource]="dataSource">
 
   <!--&lt;!&ndash; ID Column &ndash;&gt;-->
@@ -30,14 +36,14 @@
   <ng-container cdkColumnDef="edit">
     <md-header-cell *cdkHeaderCellDef> Edit </md-header-cell>
     <md-cell *cdkCellDef="let row" >
-      <button md-raised-button (click)="onEdit(employee._id, row._id, row)"> Edit </button>
+      <button md-raised-button color="primary" (click)="onEdit(employee._id, row._id, row)"> Edit </button>
     </md-cell>
   </ng-container>
 
   <ng-container cdkColumnDef="remove">
   <md-header-cell *cdkHeaderCellDef> Remove </md-header-cell>
   <md-cell *cdkCellDef="let row" >
-  <button md-raised-button (click)="onDelete(row._id)"> Remove </button>
+  <button md-raised-button color="warn"(click)="onDelete(row._id)"> Remove </button>
   </md-cell>
   </ng-container>
 
