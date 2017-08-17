@@ -1,0 +1,53 @@
+<h2 md-subheader>Employee List</h2>
+
+<md-table #table [dataSource]="dataSource">
+
+  <!--&lt;!&ndash; ID Column &ndash;&gt;-->
+  <!--<ng-container cdkColumnDef="_id">-->
+    <!--<md-header-cell *cdkHeaderCellDef> Id</md-header-cell>-->
+    <!--<md-cell *cdkCellDef="let row"> {{row._id}} </md-cell>-->
+  <!--</ng-container>-->
+
+  <!-- First Name Column -->
+  <ng-container cdkColumnDef="name">
+    <md-header-cell *cdkHeaderCellDef> Name </md-header-cell>
+    <md-cell *cdkCellDef="let row">  {{row.name}} </md-cell>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container cdkColumnDef="surname">
+    <md-header-cell *cdkHeaderCellDef> Surname </md-header-cell>
+    <md-cell *cdkCellDef="let row"> {{row.surname}} </md-cell>
+  </ng-container>
+
+  <!-- Equipment Count Column -->
+  <ng-container cdkColumnDef="equipment">
+    <md-header-cell *cdkHeaderCellDef> Equipment Count </md-header-cell>
+    <md-cell *cdkCellDef="let row"> {{row.equipment.length}} </md-cell>
+  </ng-container>
+
+  <!-- Equipment Count Column -->
+  <ng-container cdkColumnDef="githubUsername">
+    <md-header-cell *cdkHeaderCellDef> Github Username </md-header-cell>
+    <md-cell *cdkCellDef="let row"> {{row.githubUsername}} </md-cell>
+  </ng-container>
+
+  <!--Show Details Button Column-->
+  <ng-container cdkColumnDef="showDetails">
+    <md-header-cell *cdkHeaderCellDef> Show Details </md-header-cell>
+    <md-cell *cdkCellDef="let row" >
+      <button md-raised-button (click)="redirect(row._id)"> Show Details </button>
+    </md-cell>
+  </ng-container>
+
+  <!--<ng-container cdkColumnDef="remove">-->
+    <!--<md-header-cell *cdkHeaderCellDef> Remove </md-header-cell>-->
+    <!--<md-cell *cdkCellDef="let row" >-->
+      <!--<button md-raised-button > Remove </button>-->
+    <!--</md-cell>-->
+  <!--</ng-container>-->
+
+  <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+  <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+
+</md-table>

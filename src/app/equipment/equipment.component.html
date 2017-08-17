@@ -1,0 +1,31 @@
+<h2 md-subheader>Equipment for ...</h2>
+
+<div *ngIf="equipment">
+  <md-card>
+    <md-list>
+      <md-list-item>
+        <md-select placeholder="Type" [(ngModel)]="equipment.type" floatPlaceholder="never">
+          <md-option *ngFor="let type of typeSelect" [value]="type.value">{{ type.name }}</md-option>
+        </md-select>
+      </md-list-item>
+      <md-list-item>
+        <md-input-container>
+        <label>Manufacturer</label>
+        <input mdInput [(ngModel)]="equipment.manufacturer">
+        </md-input-container>
+      </md-list-item>
+
+      <md-list-item>
+        <md-input-container>
+          <label>Serial Number</label>
+          <input mdInput [(ngModel)]="equipment.serialNumber">
+        </md-input-container>
+      </md-list-item>
+
+      <md-list-item>
+          <button *ngIf="!params.eqpId" md-raised-button (click)="onAddNew()"> Save </button>
+        <button *ngIf="params.eqpId" md-raised-button (click)="onUpdate()"> Update </button>
+      </md-list-item>
+    </md-list>
+  </md-card>
+</div>

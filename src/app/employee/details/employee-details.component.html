@@ -1,0 +1,56 @@
+<h2 *ngIf="employee" md-subheader>List of equipment for {{employee.name}} {{employee.surname}}</h2>
+<button *ngIf="employee" md-raised-button (click)="addNew(employee._id)"> Add New Equipment </button>
+<md-table #table [dataSource]="dataSource">
+
+  <!--&lt;!&ndash; ID Column &ndash;&gt;-->
+  <!--<ng-container cdkColumnDef="_id">-->
+  <!--<md-header-cell *cdkHeaderCellDef> Id</md-header-cell>-->
+  <!--<md-cell *cdkCellDef="let row"> {{row._id}} </md-cell>-->
+  <!--</ng-container>-->
+
+  <!-- Type Column -->
+  <ng-container cdkColumnDef="type">
+    <md-header-cell *cdkHeaderCellDef> Equimpment type</md-header-cell>
+    <md-cell *cdkCellDef="let row">  {{row.type}} </md-cell>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container cdkColumnDef="manufacturer">
+    <md-header-cell *cdkHeaderCellDef> Manufacturer </md-header-cell>
+    <md-cell *cdkCellDef="let row"> {{row.manufacturer}} </md-cell>
+  </ng-container>
+
+  <!-- Last Name Column -->
+  <ng-container cdkColumnDef="serialNumber">
+    <md-header-cell *cdkHeaderCellDef> Serial Number </md-header-cell>
+    <md-cell *cdkCellDef="let row"> {{row.serialNumber}} </md-cell>
+  </ng-container>
+
+  <!--Show Details Button Column-->
+  <ng-container cdkColumnDef="edit">
+    <md-header-cell *cdkHeaderCellDef> Edit </md-header-cell>
+    <md-cell *cdkCellDef="let row" >
+      <button md-raised-button (click)="onEdit(employee._id, row._id, row)"> Edit </button>
+    </md-cell>
+  </ng-container>
+
+  <ng-container cdkColumnDef="remove">
+  <md-header-cell *cdkHeaderCellDef> Remove </md-header-cell>
+  <md-cell *cdkCellDef="let row" >
+  <button md-raised-button (click)="onDelete(row._id)"> Remove </button>
+  </md-cell>
+  </ng-container>
+
+  <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+  <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+
+</md-table>
+
+<md-card *ngIf="gihubRepos.length != 0">
+  <h2 *ngIf="employee" md-subheader>List of github repositories for {{employee.name}} {{employee.surname}} ({{employee.githubUsername}})</h2>
+  <md-list>
+    <md-list-item *ngFor="let repo of gihubRepos">
+      <p>{{repo.name}} <a href="{{repo.clone_url}}" target="_blank">{{repo.clone_url}}</a></p>
+    </md-list-item>
+  </md-list>
+</md-card>
